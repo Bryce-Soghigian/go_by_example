@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 // Hello World
@@ -46,8 +47,8 @@ func variables() {
 	var e int
 	fmt.Println(e)
 	//The := syntax is shorthand for declaring and initializing a variable, e.g. for var f string = "apple" in this case.
-	random_variable_name := "apple"
-	fmt.Println(random_variable_name)
+	// random_variable_name := "apple"
+	// fmt.Println(random_variable_name)
 
 }
 
@@ -126,6 +127,86 @@ func ifElseStatements() {
 	}
 }
 
+/*
+Switch statements express conditionals across many branches.
+
+*/
+
+func switchStatements() {
+	i := 2
+	fmt.Print("Write ", i, " as ")
+	switch i {
+	case 1:
+		fmt.Println("one")
+	case 2:
+		fmt.Println("two")
+	case 3:
+		fmt.Println("three")
+	}
+	switch time.Now().Weekday() {
+	case time.Saturday, time.Sunday:
+		fmt.Println("It's the weekend")
+	default:
+		fmt.Println("It's a weekday")
+	}
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("It's before noon")
+	default:
+		fmt.Println("It's after noon")
+	}
+}
+
+/*
+
+
+ */
+
+func arrays() {
+	intArray := [5]int{1, 2, 3, 4, 5}
+	fmt.Println(intArray, "Array")
+	for i := 0; i < len(intArray); i++ {
+		fmt.Println("Loop Number:", intArray[i])
+	}
+}
+
+func slices() {
+	slice := make([]string, 3)
+	fmt.Println(slice)
+	slice[0] = "a"
+	slice[1] = "b"
+	slice[2] = "c"
+	fmt.Println("slice after", slice)
+	cop := make([]string, len(slice))
+	copy(cop, slice)
+
+}
+func maps() {
+	m := make(map[string]int)
+	m["key_one"] = 7
+	m["key_two"] = 13
+	fmt.Println("map:", m)
+	v1 := m["key_one"]
+	fmt.Println("v1: ", v1)
+	fmt.Println("len:", len(m))
+	delete(m, "key_two")
+	fmt.Println(m)
+
+	_, prs := m["k2"]
+	fmt.Println("prs:", prs)
+	n := map[string]int{"foo": 1, "bar": 2}
+	fmt.Println("map:", n)
+
+	nums := []int{2, 3, 4}
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+	for k := range n {
+		fmt.Println("key ", k)
+	}
+}
 func main() {
 	//All of the functions will be called in here
 	// helloWorld()
@@ -134,4 +215,8 @@ func main() {
 	// constants()
 	// forLoop()
 	// ifElseStatements()
+	// switchStatements()
+	// arrays()
+	// slices()
+	maps()
 }
